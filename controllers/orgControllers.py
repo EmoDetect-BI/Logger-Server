@@ -23,12 +23,12 @@ def addUser(store, body) :
             "status" : "error",
             "message" : "Org does not exist"
         })
-    if nm in store.orgStructure[org] :
+    if store.isUser(org, nm) :
         return jsonify({
             "status" : "error",
             "message" : "User already exists"
         })
-    store.orgStructure[org].add(nm)
+    store.addUser(org, nm)
     store.save()
     return jsonify({
         "status" : "success",
