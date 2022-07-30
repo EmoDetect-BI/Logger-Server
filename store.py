@@ -2,12 +2,12 @@ import os
 import pickle
 
 class Store : 
-    def __init__(self, save_pth) :
+    def __init__(self, save_pth, load=True) :
         self.save_pth = save_pth
         self.orgStructure = {}
         self.sessions = {}
         self.logs = {}
-        if os.path.exists(save_pth) :
+        if load and os.path.exists(save_pth) :
             print("Loading Database...")
             with open(save_pth, "rb") as f :
                 sv = pickle.load(f)
@@ -40,7 +40,7 @@ class Store :
     
     def __repr__(self) : 
         return str(self.orgStructure)
-
+    
     def getDB(self) :
         print(self.logs)
         org = {}
