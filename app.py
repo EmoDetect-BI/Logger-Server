@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from store import Store
 import uuid
+from utils import *
 
 app = Flask(__name__)
 store = Store()
@@ -15,24 +16,9 @@ def home() :
 
 @app.route("/createOrg", methods=["POST"])
 def createOrg() :
-    body = None
-    try : 
-        body = request.get_json()
-    except :
-        return jsonify({
-            "status" : "error", 
-            "message" : "Invalid request"
-            })
-    if not body :
-        return jsonify({
-            "status" : "error",
-            "message" : "No body"
-        })
-    if not "name" in body :
-        return jsonify({
-            "status" : "error",
-            "message" : "No name"
-        })
+    err, body = checkJsonAndBody(request, ["name"])
+    if err : 
+        return err
     nm = body["name"]
     if store.isOrg(nm) :
         return jsonify({
