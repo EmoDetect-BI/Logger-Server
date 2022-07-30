@@ -48,5 +48,9 @@ def log() :
 def getDB() : 
     return jsonify(store.getDB())
 
+@app.route("/getLogs/<uuid:session>", methods=["GET"])
+def getLogs(session) : 
+    return jsonify(store.getLogs(str(session)))
+
 if __name__ == '__main__':
     app.run()

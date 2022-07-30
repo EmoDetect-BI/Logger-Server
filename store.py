@@ -38,11 +38,13 @@ class Store :
             pickle.dump(self, f)
         print("Database saved to local")
     
+    def getLogs(self, session) :
+        return self.logs[session]
+    
     def __repr__(self) : 
         return str(self.orgStructure)
     
     def getDB(self) :
-        print(self.logs)
         org = {}
         for i in self.orgStructure : 
             org[i] = list(self.orgStructure[i])
