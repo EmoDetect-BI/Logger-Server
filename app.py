@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from store import Store
 import uuid
 from utils import *
+from controllers import org
 
 app = Flask(__name__)
 store = Store()
@@ -19,18 +20,7 @@ def createOrg() :
     err, body = checkJsonAndBody(request, ["name"])
     if err : 
         return err
-    nm = body["name"]
-    if store.isOrg(nm) :
-        return jsonify({
-            "status" : "error",
-            "message" : "Org already exists"
-        })
-    
-    store.addOrg(nm)
-    return jsonify({
-        "status" : "success",
-        "message" : "Org created"
-    })
+    return org.createOrg(store, body)
 
 if __name__ == '__main__':
     app.run()
