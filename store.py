@@ -7,11 +7,12 @@ class Store :
         self.orgStructure = {}
         self.logs = {}
         if os.path.exists(save_pth) :
-            print("Loading database...")
+            print("Loading Database...")
             with open(save_pth, "rb") as f :
                 sv = pickle.load(f)
                 self.orgStructure = sv.orgStructure
                 self.logs = sv.logs
+            print("Database Loaded from local")
         
     def isOrg(self, orgName) :
         return orgName in self.orgStructure

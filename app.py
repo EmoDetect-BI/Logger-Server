@@ -23,7 +23,7 @@ def addUser() :
     err, body = checkJsonAndBody(request, ["name", "org"])
     if err : 
         return err
-    return DUMMY_RES()
+    return org.addUser(store, body)
 
 if __name__ == '__main__':
     app.run()
