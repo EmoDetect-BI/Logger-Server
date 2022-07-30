@@ -9,6 +9,7 @@ def createOrg(store, body) :
         })
     
     store.addOrg(nm)
+    store.save()
     return jsonify({
         "status" : "success",
         "message" : "Org created"

@@ -5,15 +5,11 @@ from utils import *
 from controllers import org
 
 app = Flask(__name__)
-store = Store()
+store = Store("store.pkl")
 
 @app.route("/", methods=["GET"])
 def home() : 
-    res = {
-        "status" : "success",
-        "message" : "API working"
-    }
-    return jsonify(res)
+    return DUMMY_RES()
 
 @app.route("/createOrg", methods=["POST"])
 def createOrg() :
@@ -21,6 +17,13 @@ def createOrg() :
     if err : 
         return err
     return org.createOrg(store, body)
+
+@app.route("/addUser", methods=["POST"])
+def addUser() :
+    err, body = checkJsonAndBody(request, ["name", "org"])
+    if err : 
+        return err
+    return DUMMY_RES()
 
 if __name__ == '__main__':
     app.run()
