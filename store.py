@@ -23,6 +23,7 @@ class Store :
     def save(self) :
         with open(self.save_pth, "wb") as f :
             pickle.dump(self, f)
+        print("Database updated")
     
     def __repr__(self) : 
         return str(self.orgStructure)

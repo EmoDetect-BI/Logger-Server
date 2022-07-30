@@ -3,13 +3,11 @@ from flask import jsonify
 def DUMMY_RES() :
     return jsonify({
         "status" : "success",
-        "message" : "API working"
     })
 
 def DUMMY_ERR() :
     return jsonify({
         "status" : "failed",
-        "message" : "API not working"
     })
 
 def checkJsonAndBody(req, fields) :
