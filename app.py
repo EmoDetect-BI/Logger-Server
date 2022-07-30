@@ -38,7 +38,10 @@ def createSession() :
 
 @app.route("/log", methods=["POST"])
 def log() : 
-    err, body = checkJsonAndBody(request, ["name", "org", "session", "log"])
+    err, body = checkJsonAndBody(request, ["session", "log"])
+    if err : 
+        return err
+    logControllers.saveLog(store, body)
     return DUMMY_RES()
 
 @app.route("/getDB", methods=["GET"])

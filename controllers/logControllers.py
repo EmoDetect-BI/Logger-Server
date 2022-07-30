@@ -1,4 +1,5 @@
 from flask import jsonify
+from utils import DUMMY_RES
 
 def createSession(store, body) :
     org = body["org"] 
@@ -26,3 +27,9 @@ def createSession(store, body) :
         "status" : "success",
         "message" : "Session created"
     })
+    
+def saveLog(store, body) :
+    session = body["session"]
+    data = body["log"]
+    store.logs[session].append(data)
+    return DUMMY_RES()

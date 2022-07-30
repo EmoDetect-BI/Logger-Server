@@ -31,6 +31,7 @@ class Store :
     
     def addSession(self, orgName, userName, session) : 
         self.sessions[(orgName, userName)].add(session)
+        self.logs[session] = []
     
     def save(self) :
         with open(self.save_pth, "wb") as f :
@@ -41,6 +42,7 @@ class Store :
         return str(self.orgStructure)
 
     def getDB(self) :
+        print(self.logs)
         org = {}
         for i in self.orgStructure : 
             org[i] = list(self.orgStructure[i])
