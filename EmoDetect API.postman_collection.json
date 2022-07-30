@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "2a09c749-95e0-4207-9615-53a0c899a89a",
+		"name": "EmoDetect API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13421109"
+	},
+	"item": [
+		{
+			"name": "Structure",
+			"item": [
+				{
+					"name": "Create Organization",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Org1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/createOrg",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"createOrg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"org\" : \"Org1\",\r\n    \"name\" : \"User1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/addUser",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"addUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sessions",
+			"item": [
+				{
+					"name": "Create Session",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"org\" : \"Org1\",\r\n    \"name\" : \"User1\",\r\n    \"session\" : \"afasdfas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/createSession",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"createSession"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Log",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"session\" : \"afasdfas\",\r\n    \"log\" : \"data\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/log",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"log"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Logs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/getLogs/524d681f-58ce-430f-8402-dd6361079018",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"getLogs",
+								"524d681f-58ce-430f-8402-dd6361079018"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}",
+					"host": [
+						"{{local}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Database",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/saveDatabase",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"saveDatabase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDB",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/getDB",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"getDB"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}
